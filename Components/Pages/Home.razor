@@ -1,0 +1,34 @@
+﻿@page "/"
+@using BasicBlazorMovieApp.Components.Layout
+@using BasicBlazorMovieApp.Models
+@using BasicBlazorMovieApp.Services
+@inject IMovieReviewService MovieReviewService
+
+<PageTitle>Movies Home</PageTitle>
+
+<h1 class="text-center mb-4">Movies</h1>
+
+<div class="custom-container">
+@if (Movies is null)
+{
+    <h3>Loading...</h3>
+}
+else
+{
+    @for (int i = 0; i <= Movies.Count / 3; i++)
+    {
+        MovieModel[] movieGroup = [.. Movies.Skip(i * 6).Take(6)];
+
+            @foreach (var movie in movieGroup)
+            {
+                <MovieItem Movie="@movie"/>
+            }
+    }
+}
+</div>
+
+@code {
+    List<MovieModel>? Movies = null;
+
+    protected override async Task OnInitializedAsync() => Movies = MovieReviewService?.GetMovies();
+}

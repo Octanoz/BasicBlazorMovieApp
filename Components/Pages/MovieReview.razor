@@ -1,0 +1,36 @@
+﻿@page "/MovieReview/{Id:int}"
+@using BasicBlazorMovieApp.Models
+@using BasicBlazorMovieApp.Services
+@attribute [StreamRendering(true)]
+@inject IMovieReviewService MovieReviewService
+@inject NavigationManager NavigationManager
+
+<h2 id="top-focus" class="reviewtitle text-center">Movie Review for @MovieItem?.Title</h2>
+
+@if(MovieItem is null)
+{
+    <h3>Loading...</h3>
+}
+else
+{
+    <div class="reviewcolumns">
+        <div class="floating-image">
+            <img src="@MovieItem?.ImageUrl" alt="@MovieItem.Title movie poster"/>
+        </div>
+        <div class="reviewtext">
+            @((MarkupString)@MovieItem?.Review)
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    private MovieModel? MovieItem { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(100);
+        MovieItem = MovieReviewService?.GetMovieById(Id);
+    }
+}
