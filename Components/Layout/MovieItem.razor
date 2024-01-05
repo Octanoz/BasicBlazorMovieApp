@@ -1,11 +1,12 @@
 ﻿@using BasicBlazorMovieApp.Models
 
-<div class="card text-white bg-secondary">
+<div class="card text-white">
     <div class="custom-card">
         <img class="img-thumbnail" src="@Movie?.ImageUrl" />
         <div class="card-body">
             <a class="cardlink" href="/MovieReview/@Movie?.Id"><h5>@Movie?.Title</h5></a>
             <p class="card-text"><strong>@Movie?.Description</strong></p>
+            <input class="expand-button" type="checkbox"/>
         </div>
     </div>
 </div>
