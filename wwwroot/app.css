@@ -93,15 +93,6 @@ h1:focus {
     margin-bottom: 1em;
 }
 
-/*.custom-card .card-text {
-    --card-text-max-lines: 5;
-
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: var(--card-text-max-lines);
-    overflow: hidden;
-}*/
-
 .custom-card .card-text {
     --card-text-max-lines: 5;
     --card-line-height: 1.5;
@@ -124,7 +115,6 @@ h1:focus {
 .custom-card .expand-button {
     appearance: none;
     background-color: hsl(288, 84%, 15%);
-    /*border: 1px solid purple;*/
     padding: 0.5em;
     border-radius: 0.25em;
     cursor: pointer;
@@ -177,6 +167,10 @@ h1:focus {
 
     .custom-card h5 {
         margin: 0;
+    }
+
+    .custom-card .expand-button {
+        display: none;
     }
 }
 

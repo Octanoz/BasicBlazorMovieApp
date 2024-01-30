@@ -93,10 +93,10 @@
 
     .navbar-toggler:checked ~ .nav-scrollable {
         transform: translateY(0) scaleY(1);
+    }
 
-        .flex-column {
-                         height: min-content;
-                     }
+    .navbar-toggler:checked ~ .nav-scrollable .flex-column {
+        height: min-content;
     }
 }
 
